@@ -1,0 +1,22 @@
+{
+  "name": "express-nuxt",
+  "version": "1.0.0",
+  "description": "Express &amp; Nuxt",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gongzza/express-nuxt.git"
+  },
+  "keywords": [
+    "express", "nuxt"
+  ],
+  "author": "gongzza <gz.us.to@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gongzza/express-nuxt/issues"
+  },
+  "homepage": "https://github.com/gongzza/express-nuxt#readme"
+}
