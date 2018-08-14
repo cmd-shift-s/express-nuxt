@@ -11,12 +11,16 @@
     "url": "git+https://github.com/gongzza/express-nuxt.git"
   },
   "keywords": [
-    "express", "nuxt"
+    "express",
+    "nuxt"
   ],
   "author": "gongzza <gz.us.to@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/gongzza/express-nuxt/issues"
   },
-  "homepage": "https://github.com/gongzza/express-nuxt#readme"
+  "homepage": "https://github.com/gongzza/express-nuxt#readme",
+  "dependencies": {
+    "typescript": "^3.0.1"
+  }
 }
