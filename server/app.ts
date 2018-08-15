@@ -2,6 +2,8 @@ import 'reflect-metadata'
 import { useExpressServer } from 'routing-controllers'
 import * as express from 'express'
 import * as morgan from 'morgan'
+import { NotFoundHandler } from './middlewares/NotFound'
+import { ErrorHandler } from './middlewares/ErrorHandler'
 
 require('dotenv').config()
 
@@ -11,5 +13,7 @@ app.use(morgan(process.env.LOG_LEVEL))
 
 useExpressServer(app, {
   routePrefix: '/api',
-  controllers: [`${__dirname}/controllers/*.{ts,js}`]
+  defaultErrorHandler: false,
+  controllers: [`${__dirname}/controllers/*.{ts,js}`],
+  middlewares: [NotFoundHandler, ErrorHandler]
 })
