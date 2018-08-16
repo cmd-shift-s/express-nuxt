@@ -2,7 +2,7 @@ import { Middleware, ExpressMiddlewareInterface, NotFoundError } from 'routing-c
 import { Request, Response, NextFunction } from 'express'
 
 @Middleware({ type: 'after' })
-export class NotFoundMiddleware implements ExpressMiddlewareInterface {
+export class NotFoundHandler implements ExpressMiddlewareInterface {
 
   use(req: Request, res: Response, next: NextFunction): void {
     if (!res.headersSent) {

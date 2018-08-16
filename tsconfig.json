@@ -8,7 +8,7 @@
     "experimentalDecorators": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": ["src/*"]
+      "~/*": ["server/*"]
     }
   },
   "exclude": [
