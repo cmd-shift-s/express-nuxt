@@ -6,7 +6,7 @@ export class EchoController {
   private logger = debug('server:EchoController')
 
   @Get()
-  public echo(@QueryParam('msg') msg: string) {
+  public echo(@QueryParam('msg', { required: true }) msg: string) {
     this.logger(`GET / msg: ${msg}`)
     return { msg }
   }

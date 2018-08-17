@@ -15,4 +15,9 @@ describe('EchoController', () => {
       .query(echo)
       .expect(200, echo)
   })
+
+  it('should return 400', () => {
+    return req.get('/api/echo')
+      .expect(400)
+  })
 })
