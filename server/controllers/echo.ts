@@ -1,5 +1,5 @@
 import { JsonController, Get, QueryParam } from 'routing-controllers'
-import * as debug from 'debug'
+import debug from 'debug'
 
 @JsonController('/echo')
 export class EchoController {

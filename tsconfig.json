@@ -2,17 +2,15 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "esnext",
+    "esModuleInterop": true,
     "moduleResolution": "node",
     "outDir": "dist",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "sourceMap": true,
     "baseUrl": ".",
     "paths": {
       "~/*": ["server/*"]
     }
-  },
-  "exclude": [
-    "dist",
-    "node_modules"
-  ]
+  }
 }

@@ -1,4 +1,4 @@
-import { app } from '../server/app'
+import { app } from './app'
 
 const runServer = async () => {
   app.listen(process.env.PORT, () => {
