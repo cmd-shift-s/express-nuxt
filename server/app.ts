@@ -24,6 +24,7 @@ if (isProd) {
 
 useExpressServer(app, {
   routePrefix: '/api',
+  cors: !isProd,
   defaultErrorHandler: false,
   controllers: [`${__dirname}/controllers/*.{ts,js}`],
   middlewares
