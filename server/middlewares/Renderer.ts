@@ -3,7 +3,7 @@ import { Request, Response, NextFunction } from 'express'
 import { Nuxt } from 'nuxt'
 
 export interface IRenderer {
-  render(req: Request, res: Response, next?: NextFunction): Primise<any>
+  render(req: Request, res: Response, next?: NextFunction): void
 }
 
 @Middleware({ type: 'before' })
