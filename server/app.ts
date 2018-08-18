@@ -2,7 +2,7 @@ import 'reflect-metadata'
 import { useExpressServer } from 'routing-controllers'
 import express from 'express'
 import morgan from 'morgan'
-import { NuxtMiddleware } from './middlewares/Nuxt'
+import { RendererMiddleware } from './middlewares/Renderer'
 import { NotFoundHandler } from './middlewares/NotFound'
 import { ErrorHandler } from './middlewares/ErrorHandler'
 
@@ -17,8 +17,9 @@ const middlewares = [
   NotFoundHandler, ErrorHandler
 ]
 
+/* istanbul ignore if */
 if (isProd) {
-  middlewares.unshift(NuxtMiddleware)
+  middlewares.unshift(RendererMiddleware)
 }
 
 useExpressServer(app, {
