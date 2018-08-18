@@ -1,4 +1,4 @@
-
+require('dotenv').config()
 const isProd = process.env.NODE_ENV === 'production'
 
 const axios = {
@@ -10,6 +10,9 @@ if (!isProd) {
 }
 
 module.exports = {
+  router: {
+    base: process.env.ROUTER_BASE
+  },
   modules: [
     '@nuxtjs/axios'
   ],
