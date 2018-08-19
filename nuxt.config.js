@@ -2,6 +2,7 @@ require('dotenv').config()
 const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {
+  srcDir: 'client/',
   head: {
     title: 'Express & Nuxt',
     meta: [
