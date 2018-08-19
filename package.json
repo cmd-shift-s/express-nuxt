@@ -52,7 +52,6 @@
     "@types/supertest": "^2.0.5",
     "codecov": "^3.0.4",
     "concurrently": "^3.6.1",
-    "cors": "^2.8.4",
     "jest": "^23.5.0",
     "node-mocks-http": "^1.7.0",
     "nodemon": "^1.18.3",

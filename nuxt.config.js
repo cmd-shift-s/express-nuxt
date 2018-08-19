@@ -1,4 +1,5 @@
 require('dotenv').config()
+const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {
   router: {
@@ -6,5 +7,11 @@ module.exports = {
   },
   modules: [
     '@nuxtjs/axios'
-  ]
+  ],
+  axios: {
+    proxy: !isProd
+  },
+  proxy: {
+    [process.env.API_PREFIX]: process.env.API_URL
+  }
 }
