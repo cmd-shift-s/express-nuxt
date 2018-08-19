@@ -17,11 +17,11 @@ export class RendererMiddleware implements ExpressMiddlewareInterface {
   }
 
   use(req: Request, res: Response, next: NextFunction): void {
-    if (!/^\/api/.test(req.path)) {
-      this.renderer.render(req, res, next)
-    } else {
-      next()
+    if (req.path.startsWith(process.env.API_PREFIX)) {
+      return next()
     }
+
+    return this.renderer.render(req, res, next)
   }
 
 }
