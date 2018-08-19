@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "concurrently -n TS,Serve \"npm:watch:tsc\" \"npm:watch:serve\"",
     "watch:tsc": "npm run build:tsc -- --watch",
-    "watch:serve": "nodemon --watch dist dist/server",
+    "watch:serve": "nodemon --watch dist --watch .env dist/server",
     "clean": "rimraf dist && rimraf .nuxt",
     "prebuild": "npm run clean && npm run lint",
     "build": "npm run build:tsc && npm run build:nuxt",
