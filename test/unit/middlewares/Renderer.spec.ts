@@ -8,7 +8,7 @@ describe('RendererMiddleware', () => {
     const render = jest.fn()
     const handler = new RendererMiddleware({ render })
     const req = createRequest({
-      path: '/api'
+      path: process.env.API_PREFIX
     })
     const res = createResponse()
     const next = jest.fn()

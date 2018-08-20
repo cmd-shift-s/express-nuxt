@@ -3,7 +3,8 @@ module.exports = {
     "^.+\\.tsx?$": "ts-jest"
   },
   "setupFiles": [
-    "<rootDir>/node_modules/reflect-metadata"
+    "<rootDir>/node_modules/reflect-metadata",
+    "<rootDir>/test/unit/setup.ts"
   ],
   "testRegex": "(test|spec)\\.(jsx?|tsx?)$",
   "moduleFileExtensions": [
