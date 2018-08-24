@@ -4,7 +4,7 @@
     <section class="todoapp">
       <header class="header">
         <h1>todos</h1>
-        <input class="new-todo" placeholder="What needs to be done?" autofocus>
+        <todo-input @input="add"></todo-input>
       </header>
       <!-- This section should be hidden by default and shown when there are todos -->
       <section class="main">
@@ -13,14 +13,12 @@
         <ul class="todo-list">
           <!-- These are here just to show the structure of the list items -->
           <!-- List items should get the class `editing` when editing and `completed` when marked as completed -->
-          <li v-for="todo of showTodos" :key="todo.id" :class="itemClassses(todo)">
-            <div class="view">
-              <input type="checkbox" class="toggle" v-model="todo.done">
-              <label @dblclick="toggle($event, todo)">{{todo.text}}</label>
-              <button class="destroy"></button>
-            </div>
-            <input type="text" class="edit" v-model="text" @blur="toggle()" @keyup.esc="toggle()" @keyup.enter="save(todo)">
-          </li>
+          <todo-item
+            v-for="(todo, index) of showTodos"
+            :key="todo.id"
+            :item="todo"
+            @save="save(index, $event)"
+          ></todo-item>
         </ul>
       </section>
       <!-- This footer should hidden by default and shown when there are todos -->
@@ -52,6 +50,9 @@
 </template>
 
 <script>
+import TodoInput from '~/components/todo/TodoInput.vue'
+import TodoItem from '~/components/todo/TodoItem.vue'
+
 export default {
   name: 'todos-page',
   head: {
@@ -59,8 +60,7 @@ export default {
   },
   data: () => ({
     todos: [],
-    editTodoId: 0,
-    text: '',
+    idx: 2
   }),
   async asyncData({$axios}) {
     return {
@@ -103,36 +103,32 @@ export default {
     },
   },
   methods: {
-    itemClassses(todo) {
-      return {
-        completed: todo.done,
-        editing: this.editTodoId === todo.id
-      }
-    },
     clearCompleted() {
       this.todos = this.activeTodos
     },
-    toggle($event, todo) {
-      if (todo) {
-        this.editTodoId = todo.id
-        this.text = todo.text
-        this.$nextTick(() => {
-          $event.target.parentElement.nextSibling.focus()
-        })
-      } else {
-        this.editTodoId = 0
-      }
+    save(idx, todo) {
+      Object.assign(this.showTodos[idx], todo)
     },
-    save(todo) {
-      todo.text = this.text
-      this.toggle()
+    add(text) {
+      if (!text) return
+
+      this.idx++
+      this.todos.push({
+        id: this.idx,
+        text, done: false
+      })
     }
+  },
+  components: {
+    TodoInput,
+    TodoItem
   }
 }
 </script>
 
 <style lang="scss">
 @import url("todomvc-app-css");
+
 a {
   cursor: pointer;
 }
