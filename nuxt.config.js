@@ -21,6 +21,6 @@ module.exports = {
     proxy: !isProd
   },
   proxy: {
-    [process.env.API_PREFIX]: process.env.API_URL
+    [process.env.API_PREFIX]: { target: process.env.API_URL, pathRewrite: {'^/api/': ''} }
   }
 }
