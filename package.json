@@ -14,7 +14,7 @@
     "build:nuxt": "nuxt build",
     "start": "node dist/server",
     "lint": "tslint -p tsconfig.json",
-    "test": "npm run lint && jest",
+    "test": "jest",
     "watch:test": "npm test -- --watch",
     "report-coverage": "codecov"
   },
