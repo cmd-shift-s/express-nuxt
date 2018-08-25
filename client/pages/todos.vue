@@ -14,10 +14,11 @@
           <!-- These are here just to show the structure of the list items -->
           <!-- List items should get the class `editing` when editing and `completed` when marked as completed -->
           <todo-item
-            v-for="(todo, index) of showTodos"
+            v-for="todo of showTodos"
             :key="todo.id"
             :item="todo"
-            @save="save(index, $event)"
+            @save="save($event)"
+            @remove="remove($event)"
           ></todo-item>
         </ul>
       </section>
@@ -60,24 +61,12 @@ export default {
   },
   data: () => ({
     todos: [],
-    idx: 2
+    tab: 'all'
   }),
   async asyncData({$axios}) {
+    const { data: todos } = await $axios.get('todos')
     return {
-      // todos: await $axios.get('todos').then(res => res.data.data)
-      todos: [
-        {
-          id: 1,
-          text: 'Taste JavaScript',
-          done: true
-        },
-        {
-          id: 2,
-          text: 'Buy a unicorn',
-          done: false
-        }
-      ],
-      tab: 'all'
+      todos
     }
   },
   computed: {
@@ -106,17 +95,27 @@ export default {
     clearCompleted() {
       this.todos = this.activeTodos
     },
-    save(idx, todo) {
-      Object.assign(this.showTodos[idx], todo)
+    async save(todo) {
+      const { data: updatedTodo } = await this.$axios.put(`todos/${todo.id}`, todo)
+
+      const index = this.todos.findIndex(v => v.id === todo.id)
+      if (!~index) return
+
+      this.$set(this.todos, index, updatedTodo)
     },
-    add(text) {
+    async add(text) {
       if (!text) return
 
-      this.idx++
-      this.todos.push({
-        id: this.idx,
-        text, done: false
-      })
+      const { data: todo } = await this.$axios.post('todos', { text })
+      this.todos.push(todo)
+    },
+    async remove(id) {
+      await this.$axios.delete(`todos/${id}`)
+
+      const index = this.todos.findIndex(v => v.id === id)
+      if (!~index) return
+
+      this.todos.splice(index, 1)
     }
   },
   components: {
