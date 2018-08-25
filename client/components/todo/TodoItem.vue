@@ -3,7 +3,7 @@
     <div class="view">
       <input type="checkbox" class="toggle" v-model="todo.done" @change="save()">
       <label @dblclick="toggle(true)">{{item.text}}</label>
-      <button class="destroy"></button>
+      <button class="destroy" @click="$emit('remove', item.id)"></button>
     </div>
     <input ref="edit" type="text" class="edit" v-model="todo.text" @blur="toggle(false)" @keyup.esc="toggle(false)" @keyup.enter="save()">
   </li>
@@ -40,7 +40,7 @@ export default {
     toggle(edit) {
       this.edit = edit
       this.todo.text = this.item.text
-      
+
       if (edit) {
         this.$nextTick(() => {
           this.$refs.edit.focus()
