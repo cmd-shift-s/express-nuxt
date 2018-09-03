@@ -54,7 +54,7 @@
 import { Component, Vue } from 'nuxt-property-decorator'
 import TodoInput from '~/components/todo/TodoInput.vue'
 import TodoItem from '~/components/todo/TodoItem.vue'
-import { Todo } from '~/models'
+import { Todo } from '@share/models'
 
 @Component({
   components: {

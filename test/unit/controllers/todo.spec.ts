@@ -1,6 +1,6 @@
 import request from 'supertest'
 import { app } from '~/app'
-import { Todo } from '~/models'
+import { Todo } from '@share/models'
 
 describe('TodoController', () => {
   const req = request(app)

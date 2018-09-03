@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'nuxt-property-decorator'
-import { Todo } from '~/models'
+import { Todo } from '@share/models'
 
 @Component
 export default class TodoItem extends Vue {

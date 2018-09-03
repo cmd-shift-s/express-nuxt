@@ -15,6 +15,7 @@ module.exports = {
     "json"
   ],
   "moduleNameMapper": {
+    "@share/(.*)$": "<rootDir>/share/$1",
     "~/(.*)$": "<rootDir>/server/$1"
   },
   "collectCoverage": true,

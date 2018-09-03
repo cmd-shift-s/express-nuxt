@@ -1,6 +1,6 @@
 import { JsonController, Get, Post, Put, Delete, Body, BodyParam, Param, NotFoundError, BadRequestError } from 'routing-controllers'
 import debug from 'debug'
-import { Todo } from '~/models'
+import { Todo } from '@share/models'
 
 @JsonController('/todos')
 export class TodoController {

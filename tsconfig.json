@@ -10,7 +10,8 @@
     "sourceMap": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": ["server/*", "client/*", "share/*"]
+      "~/*": ["server/*", "client/*"],
+      "@share/*": ["share/*"]
     }
   }
 }
