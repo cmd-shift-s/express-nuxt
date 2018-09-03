@@ -12,7 +12,7 @@
     "build": "npm run build:tsc && npm run build:nuxt",
     "build:tsc": "tsc -p tsconfig.server.json",
     "build:nuxt": "nuxt build",
-    "start": "node dist/server",
+    "start": "node dist/server/server",
     "lint": "tslint -p tsconfig.json",
     "test": "jest",
     "watch:test": "npm test -- --watch",
