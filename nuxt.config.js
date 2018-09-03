@@ -15,7 +15,8 @@ module.exports = {
     base: process.env.ROUTER_BASE
   },
   modules: [
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '~/modules/typescript.js'
   ],
   axios: {
     proxy: !isProd

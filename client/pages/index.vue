@@ -7,25 +7,25 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'home',
-  data: () => ({
-    msg: ''
-  }),
-  methods: {
-    async onSubmit({target}) {
-      const inputEl = target.firstElementChild
-      const msg = inputEl.value
-      if (!msg) {
-        inputEl.focus()
-        return
-      }
+<script lang="ts">
+import { Component, Vue } from 'nuxt-property-decorator'
 
-      const params = { msg }
-      const { data } = await this.$axios.get('echo', { params })
-      this.msg = data.msg
+@Component
+export default class IndexPage extends Vue {
+
+  msg: string = ''
+
+  async onSubmit({ target }: {target: HTMLFormElement}) {
+    const inputEl = target.firstElementChild as HTMLInputElement
+    const msg = inputEl.value
+    if (!msg) {
+      inputEl.focus()
+      return
     }
+
+    const params = { msg }
+    const { data } = await this.$axios.get('echo', { params })
+    this.msg = data.msg
   }
 }
 </script>

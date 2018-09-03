@@ -50,77 +50,80 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { Component, Vue } from 'nuxt-property-decorator'
 import TodoInput from '~/components/todo/TodoInput.vue'
 import TodoItem from '~/components/todo/TodoItem.vue'
+import { Todo } from '~/models'
 
-export default {
-  name: 'todos-page',
-  head: {
-    title: 'TodoMVC'
-  },
-  data: () => ({
-    todos: [],
-    tab: 'all'
-  }),
+@Component({
+  components: {
+    TodoInput, TodoItem
+  }
+})
+export default class TodoPage extends Vue {
+
+  todos: Todo[] = []
+  tab: string = 'all'
+
+  get head() {
+    return {
+      title: 'TodoMVC'
+    }
+  }
+
   async asyncData({$axios}) {
-    const { data: todos } = await $axios.get('todos')
+    const { data: todos }: {data: Todo[]} = await $axios.get('todos')
     return {
       todos
     }
-  },
-  computed: {
-    completedTodos() {
-      return this.todos.filter(todo => todo.done)
-    },
-    activeTodos() {
-      return this.todos.filter(todo => !todo.done)
-    },
-    hasCompleted() {
-      return !!this.completedTodos.length
-    },
-    showAll() { return this.tab === 'all' },
-    showActive() { return this.tab === 'active' },
-    showCompleted() { return this.tab === 'completed' },
-    showTodos() {
-      switch(true) {
-        case this.showActive: return this.activeTodos
-        case this.showCompleted: return this.completedTodos
-        default:
-          return this.todos
-      }
-    },
-  },
-  methods: {
-    clearCompleted() {
-      this.todos = this.activeTodos
-    },
-    async save(todo) {
-      const { data: updatedTodo } = await this.$axios.put(`todos/${todo.id}`, todo)
+  }
 
-      const index = this.todos.findIndex(v => v.id === todo.id)
-      if (!~index) return
-
-      this.$set(this.todos, index, updatedTodo)
-    },
-    async add(text) {
-      if (!text) return
-
-      const { data: todo } = await this.$axios.post('todos', { text })
-      this.todos.push(todo)
-    },
-    async remove(id) {
-      await this.$axios.delete(`todos/${id}`)
-
-      const index = this.todos.findIndex(v => v.id === id)
-      if (!~index) return
-
-      this.todos.splice(index, 1)
+  get completedTodos() {
+    return this.todos.filter(todo => todo.done)
+  }
+  get activeTodos() {
+    return this.todos.filter(todo => !todo.done)
+  }
+  get hasCompleted() {
+    return !!this.completedTodos.length
+  }
+  get showAll() { return this.tab === 'all' }
+  get showActive() { return this.tab === 'active' }
+  get showCompleted() { return this.tab === 'completed' }
+  get showTodos() {
+    switch(true) {
+      case this.showActive: return this.activeTodos
+      case this.showCompleted: return this.completedTodos
+      default:
+        return this.todos
     }
-  },
-  components: {
-    TodoInput,
-    TodoItem
+  }
+
+  clearCompleted() {
+    this.todos = this.activeTodos
+  }
+  async save(todo) {
+    const { data: updatedTodo }: {data: Todo} = await this.$axios.put(`todos/${todo.id}`, todo)
+
+    const index = this.todos.findIndex(v => v.id === todo.id)
+    if (!~index) return
+
+    this.$set(this.todos, index, updatedTodo)
+  }
+  async add(text) {
+    if (!text) return
+
+    const { data: todo }: {data: Todo} = await this.$axios.post('todos', { text })
+    this.todos.push(todo)
+  }
+  async remove(id) {
+    await this.$axios.delete(`todos/${id}`)
+
+    const index = this.todos.findIndex(v => v.id === id)
+    if (!~index) return
+
+    this.todos.splice(index, 1)
   }
 }
 </script>
