@@ -16,12 +16,15 @@ module.exports = {
   },
   modules: [
     '@nuxtjs/axios',
-    '~/modules/typescript.js'
+    'nuxt-typescript'
   ],
   axios: {
     proxy: !isProd
   },
   proxy: {
     [process.env.API_PREFIX]: { target: process.env.API_URL, pathRewrite: {'^/api/': ''} }
+  },
+  typescript: {
+    tsconfig: 'tsconfig.client.json'
   }
 }

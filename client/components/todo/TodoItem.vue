@@ -11,11 +11,11 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'nuxt-property-decorator'
-import { Todo } from '@share/models'
+import { Todo } from '../../../share/models'
 
 @Component
 export default class TodoItem extends Vue {
-  @Prop({required: true}) item: Todo
+  @Prop({ required: true }) item: Todo
 
   todo: Todo = {
     done: false,
@@ -41,7 +41,7 @@ export default class TodoItem extends Vue {
 
     if (edit) {
       this.$nextTick(() => {
-        (<HTMLElement>this.$refs.edit).focus()
+        (this.$refs.edit as HTMLElement).focus()
       })
     }
   }

@@ -72,7 +72,7 @@ export default class TodoPage extends Vue {
     }
   }
 
-  async asyncData({$axios}) {
+  async asyncData({ $axios }) {
     const { data: todos }: {data: Todo[]} = await $axios.get('todos')
     return {
       todos
@@ -92,7 +92,7 @@ export default class TodoPage extends Vue {
   get showActive() { return this.tab === 'active' }
   get showCompleted() { return this.tab === 'completed' }
   get showTodos() {
-    switch(true) {
+    switch (true) {
       case this.showActive: return this.activeTodos
       case this.showCompleted: return this.completedTodos
       default:

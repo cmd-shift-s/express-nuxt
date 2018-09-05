@@ -9,7 +9,7 @@ import { Component, Vue } from 'nuxt-property-decorator'
 
 @Component
 export default class TodoInput extends Vue {
-  input({target}) {
+  input({ target }) {
     this.$emit('input', target[0].value)
     target.reset()
   }
