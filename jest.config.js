@@ -1,6 +1,7 @@
 module.exports = {
   "transform": {
-    "^.+\\.tsx?$": "ts-jest"
+    "^.+\\.tsx?$": "ts-jest",
+    "^.+\\.vue$": "vue-jest"
   },
   "setupFiles": [
     "<rootDir>/node_modules/reflect-metadata",
@@ -12,11 +13,11 @@ module.exports = {
     "tsx",
     "js",
     "jsx",
-    "json"
+    "json",
+    "vue"
   ],
   "moduleNameMapper": {
-    "@share/(.*)$": "<rootDir>/share/$1",
-    "~/(.*)$": "<rootDir>/server/$1"
+    "~/(.*)$": "<rootDir>/$1"
   },
   "collectCoverage": true,
   "coverageReporters": ["lcov", "text"],
