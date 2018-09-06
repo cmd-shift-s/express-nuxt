@@ -1,5 +1,5 @@
 import { createRequest, createResponse } from 'node-mocks-http'
-import { NotFoundHandler } from '~/middlewares/NotFound'
+import { NotFoundHandler } from '~/server/middlewares/NotFound'
 import { HttpError } from 'routing-controllers'
 
 describe('NotFoundHandler', () => {

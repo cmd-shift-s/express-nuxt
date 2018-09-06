@@ -1,8 +1,15 @@
+const path = require('path')
+
 require('dotenv').config()
 const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {
   srcDir: 'client/',
+  build: {
+    extend(config) {
+      config.resolve.alias['~'] = __dirname
+    }
+  },
   head: {
     title: 'Express & Nuxt',
     meta: [

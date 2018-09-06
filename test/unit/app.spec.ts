@@ -1,6 +1,6 @@
 import request from 'supertest'
 import { NotFoundError } from 'routing-controllers'
-import { app } from '~/app'
+import { app } from '~/server/app'
 
 describe('app', () => {
   const req = request(app)
