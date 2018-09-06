@@ -1,5 +1,5 @@
 import request from 'supertest'
-import { app } from '~/server/app'
+import { app } from '~/api/app'
 
 describe('EchoController', () => {
   const req = request(app)

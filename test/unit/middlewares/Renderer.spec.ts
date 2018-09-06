@@ -1,5 +1,5 @@
 import { createRequest, createResponse } from 'node-mocks-http'
-import { RendererMiddleware } from '~/server/middlewares/Renderer'
+import { RendererMiddleware } from '~/api/middlewares/Renderer'
 
 describe('RendererMiddleware', () => {
 
