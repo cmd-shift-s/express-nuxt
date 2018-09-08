@@ -4,11 +4,14 @@ require('dotenv').config()
 const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {
-  srcDir: 'client/',
+  srcDir: 'app/',
   build: {
     extend(config) {
       config.resolve.alias['~'] = __dirname
-    }
+    },
+    watch: [
+      '.env'
+    ]
   },
   head: {
     title: 'Express & Nuxt',
@@ -32,6 +35,6 @@ module.exports = {
     [process.env.API_PREFIX]: { target: process.env.API_URL, pathRewrite: {'^/api/': ''} }
   },
   typescript: {
-    tsconfig: 'tsconfig.client.json'
+    tsconfig: 'tsconfig.app.json'
   }
 }
