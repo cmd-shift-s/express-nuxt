@@ -17,7 +17,7 @@ module.exports = {
     "vue"
   ],
   "moduleNameMapper": {
-    "~/(.*)$": "<rootDir>/$1"
+    "^~/(.*)$": "<rootDir>/$1"
   },
   "collectCoverage": true,
   "coverageReporters": ["lcov", "text"],
@@ -28,5 +28,8 @@ module.exports = {
       "lines": 80,
       "statements": -10
     }
-  }
+  },
+  "coveragePathIgnorePatterns": [
+    "test/unit/setup.ts"
+  ]
 }
