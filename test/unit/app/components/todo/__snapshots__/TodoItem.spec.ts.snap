@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/todo/TodoItem.vue render edit mode 1`] = `
+<li
+  class="editing"
+>
+  <div
+    class="view"
+  >
+    <input
+      class="toggle"
+      type="checkbox"
+    />
+     
+    <label>
+      Hello
+    </label>
+     
+    <button
+      class="destroy"
+    />
+  </div>
+   
+  <input
+    class="edit"
+    type="text"
+  />
+</li>
+`;
+
+exports[`components/todo/TodoItem.vue render todo.text 1`] = `
+<li
+  class=""
+>
+  <div
+    class="view"
+  >
+    <input
+      class="toggle"
+      type="checkbox"
+    />
+     
+    <label>
+      Hello
+    </label>
+     
+    <button
+      class="destroy"
+    />
+  </div>
+   
+  <input
+    class="edit"
+    type="text"
+  />
+</li>
+`;
+
+exports[`components/todo/TodoItem.vue should call save 1`] = `
+<li
+  class=""
+>
+  <div
+    class="view"
+  >
+    <input
+      class="toggle"
+      type="checkbox"
+    />
+     
+    <label>
+      World
+    </label>
+     
+    <button
+      class="destroy"
+    />
+  </div>
+   
+  <input
+    class="edit"
+    type="text"
+  />
+</li>
+`;
+
+exports[`components/todo/TodoItem.vue should contain "completed" class 1`] = `
+<li
+  class="completed"
+>
+  <div
+    class="view"
+  >
+    <input
+      class="toggle"
+      type="checkbox"
+    />
+     
+    <label>
+      Hello
+    </label>
+     
+    <button
+      class="destroy"
+    />
+  </div>
+   
+  <input
+    class="edit"
+    type="text"
+  />
+</li>
+`;

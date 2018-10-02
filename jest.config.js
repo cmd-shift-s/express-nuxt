@@ -29,6 +29,9 @@ module.exports = {
       "statements": -10
     }
   },
+  "snapshotSerializers": [
+    "jest-serializer-vue"
+  ],
   "coveragePathIgnorePatterns": [
     "test/unit/setup.ts"
   ]
