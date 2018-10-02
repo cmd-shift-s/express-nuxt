@@ -15,14 +15,19 @@ import { Todo } from '~/share/models'
 
 @Component
 export default class TodoItem extends Vue {
-  @Prop({ required: true }) item: Todo
+  @Prop({ required: true })
+  public item: Todo
 
-  todo: Todo = {
+  private todo: Todo = {
     done: false,
     text: ''
   }
 
-  edit = false
+  private edit = false
+
+  $refs: {
+    edit: HTMLElement
+  }
 
   beforeMount() {
     Object.assign(this.todo, this.item)
@@ -41,7 +46,7 @@ export default class TodoItem extends Vue {
 
     if (edit) {
       this.$nextTick(() => {
-        (this.$refs.edit as HTMLElement).focus()
+        this.$refs.edit.focus()
       })
     }
   }
